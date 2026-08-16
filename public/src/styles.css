@@ -1,0 +1,311 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Substrate design system.
+ * Warm paper surfaces, ink typography, spectral gradient accents.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --radius-4xl: calc(var(--radius) + 28px);
+
+  --font-display: "Gloock", ui-serif, Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-spectrum-1: var(--spectrum-1);
+  --color-spectrum-2: var(--spectrum-2);
+  --color-spectrum-3: var(--spectrum-3);
+  --color-spectrum-4: var(--spectrum-4);
+  --color-spectrum-5: var(--spectrum-5);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --paper: oklch(0.972 0.006 85);
+  --ink: oklch(0.17 0.008 65);
+
+  --background: oklch(0.972 0.006 85);
+  --foreground: oklch(0.17 0.008 65);
+  --card: oklch(0.985 0.004 85);
+  --card-foreground: oklch(0.17 0.008 65);
+  --popover: oklch(0.985 0.004 85);
+  --popover-foreground: oklch(0.17 0.008 65);
+  --primary: oklch(0.17 0.008 65);
+  --primary-foreground: oklch(0.985 0.004 85);
+  --secondary: oklch(0.94 0.007 85);
+  --secondary-foreground: oklch(0.17 0.008 65);
+  --muted: oklch(0.94 0.007 85);
+  --muted-foreground: oklch(0.53 0.011 70);
+  --accent: oklch(0.93 0.012 85);
+  --accent-foreground: oklch(0.17 0.008 65);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0.004 85);
+  --border: oklch(0.89 0.008 80);
+  --input: oklch(0.89 0.008 80);
+  --ring: oklch(0.7 0.05 280);
+
+  --spectrum-1: oklch(0.72 0.17 255);
+  --spectrum-2: oklch(0.83 0.11 195);
+  --spectrum-3: oklch(0.88 0.13 95);
+  --spectrum-4: oklch(0.74 0.21 350);
+  --spectrum-5: oklch(0.66 0.19 295);
+
+  --gradient-spectrum: linear-gradient(
+    115deg,
+    var(--spectrum-1),
+    var(--spectrum-2),
+    var(--spectrum-3),
+    var(--spectrum-4),
+    var(--spectrum-5)
+  );
+  --shadow-lift: 0 1px 2px oklch(0.17 0.008 65 / 6%), 0 18px 50px -20px oklch(0.17 0.008 65 / 18%);
+  --shadow-float: 0 40px 120px -40px oklch(0.17 0.008 65 / 30%);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+  --paper: oklch(0.16 0.008 65);
+  --ink: oklch(0.97 0.005 85);
+  --background: oklch(0.16 0.008 65);
+  --foreground: oklch(0.97 0.005 85);
+  --card: oklch(0.21 0.009 65);
+  --card-foreground: oklch(0.97 0.005 85);
+  --popover: oklch(0.21 0.009 65);
+  --popover-foreground: oklch(0.97 0.005 85);
+  --primary: oklch(0.97 0.005 85);
+  --primary-foreground: oklch(0.17 0.008 65);
+  --secondary: oklch(0.26 0.01 65);
+  --secondary-foreground: oklch(0.97 0.005 85);
+  --muted: oklch(0.26 0.01 65);
+  --muted-foreground: oklch(0.7 0.012 70);
+  --accent: oklch(0.28 0.012 65);
+  --accent-foreground: oklch(0.97 0.005 85);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: oklch(0.74 0.21 350 / 25%);
+  }
+}
+
+@utility text-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+  }
+}
+
+@utility spectrum-text {
+  background: var(--gradient-spectrum);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility dotted-frame {
+  border: 1px dashed var(--color-border);
+}
+
+@utility card-lift {
+  box-shadow: var(--shadow-lift);
+  transition:
+    transform 0.5s var(--ease-soft),
+    box-shadow 0.5s var(--ease-soft);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-float);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes hue-cycle {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@utility animate-drift {
+  animation: drift 18s var(--ease-soft) infinite;
+}
+
+@utility animate-marquee {
+  animation: marquee-left 38s linear infinite;
+}
+
+@utility animate-hue {
+  animation: hue-cycle 22s linear infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.12) rotate(4deg);
+  }
+}
+
+@utility animate-breathe {
+  animation: breathe 26s var(--ease-soft) infinite;
+}
+
+/* Custom cursor: hide the native one only while the spectral orb is active. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+@keyframes sheen {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+  }
+}
+
+@utility animate-sheen {
+  animation: sheen 2.6s var(--ease-soft) infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@utility animate-float {
+  animation: float-slow 9s var(--ease-soft) infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+@keyframes flip-in {
+  0% {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@utility animate-flip-in {
+  animation: flip-in 0.6s var(--ease-soft) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift,
+  .animate-breathe,
+  .animate-float,
+  .animate-sheen,
+  .animate-hue,
+  .animate-marquee,
+  .animate-spin-slow,
+  .animate-flip-in {
+    animation: none !important;
+  }
+}
